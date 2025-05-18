@@ -1,41 +1,67 @@
-// Декларативный стиль. Запрашиваем конкретные файлы по ссылкам
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
 
-// Императивный стиль стиль. Создаём функции \ переменные \ состояния
+// const viteLogo = '/vite.svg'; // Предполагаем, что viteLogo доступен как URL
+// const reactLogo = './assets/react.svg'; // Предполагаем, что reactLogo доступен как URL
+
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
   const yearNow = new Date().getFullYear();
 
-  // Декларативный стиль. Просим прорисовать конкретные элементы на странице
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+  const countFunc = () => {
+    setCount(count + 1);
+  };
 
-	  <p>Текущий год: {yearNow}</p>
-    </>
-  )
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'a',
+        { href: 'https://vite.dev', target: '_blank' },
+        React.createElement('img', {
+          src: '/vite.svg',
+          className: 'logo',
+          alt: 'Vite logo',
+        })
+      ),
+      React.createElement(
+        'a',
+        { href: 'https://react.dev', target: '_blank' },
+        React.createElement('img', {
+          src: '/react.svg',
+          className: 'logo react',
+          alt: 'React logo',
+        })
+      )
+    ),
+    React.createElement('h1', null, 'Vite + React'),
+    React.createElement(
+      'div',
+      { className: 'card' },
+      React.createElement(
+        'button',
+        { onClick: countFunc },
+        'count is ',
+        count
+      ),
+      React.createElement(
+        'p',
+        null,
+        'Edit ',
+        React.createElement('code', null, 'src/App.jsx'),
+        ' and save to test HMR'
+      )
+    ),
+    React.createElement(
+      'p',
+      { className: 'read-the-docs' },
+      'Click on the Vite and React logos to learn more'
+    ),
+    React.createElement('p', null, 'Текущий год: ', yearNow)
+  );
 }
 
-export default App
+export default App;
