@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 
-// const viteLogo = '/vite.svg'; // Предполагаем, что viteLogo доступен как URL
-// const reactLogo = './assets/react.svg'; // Предполагаем, что reactLogo доступен как URL
-
-
 function App() {
   const [count, setCount] = useState(0);
   const yearNow = new Date().getFullYear();
